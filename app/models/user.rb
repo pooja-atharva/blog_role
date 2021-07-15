@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :role
 
-  def super_admin?
-    self.role.name == "Super Admin"
+  def admin?
+    self.role.name == "Admin"
   end
 end

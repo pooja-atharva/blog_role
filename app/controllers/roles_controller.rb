@@ -55,6 +55,6 @@ class RolesController < InheritedResources::Base
   end
 
   def is_super_admin?
-    redirect_to home_path and return unless current_user.super_admin?
+    redirect_to root_path and return unless current_user.admin?
   end
 end

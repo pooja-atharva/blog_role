@@ -9,21 +9,20 @@
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? && AdminUser.find_by(email: 'admin@example.com').blank?
 
 #the highest role with all the permissions.
-Role.create!(:name => "Super Admin")
- 
-#other role
-Role.create!(:name => "Staff")
+Role.create!(:name => "Admin")
+Role.create!(:name => "Employee")
 
 #create a universal permission
 Permission.create!(:subject_class => "all", :action => "manage")
 
 #assign super admin the permission to manage all the models and controllers
-role = Role.find_by_name('Super Admin')
-role.permissions << Permission.find(:subject_class => 'all', :action => "manage")
+role = Role.find_by_name('Admin')
+role.permissions << Permission.where(:subject_class => 'all', :action => "manage").first
 
 # create a user and assign the super admin role to him.
-user = User.new(:name => "Prasad Surase", :email => "prasad@joshsoftware.com", :password => "prasad", :password_confirmation => "prasad")
+user = User.new(:email => "pooja@atharvasystem.com", :password => "123123", :password_confirmation => "123123")
 user.role = role
 user.save!
 
-User.create(:name => "Neo", email => "neo@matrix.com", :password => "the_one", :password_confirmation => "the_one", :role_id => Role.find_by_name('Staff').id)
+User.create(:email => "poojam@gmail.com", :password => "123123", :password_confirmation => "123123", :role_id => Role.find_by_name('Employee').id)
+
