@@ -15,6 +15,7 @@
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
       Logged in as <strong><%= current_user.email %></strong>.
+      <%=  image_tag(current_user.avatar.url , width: 50) %>
       <%= link_to 'Posts', posts_path %> |
       <%= link_to 'roles', roles_path %> |
       <%= link_to 'permissions', permissions_path %> |

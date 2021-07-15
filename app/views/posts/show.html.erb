@@ -5,5 +5,12 @@
   <%= @post.name %>
 </p>
 
+<p>
+  <strong>avatars:</strong>
+  <% @post.avatars.each do |avatar|%>
+    <%= image_tag(avatar.url, width: 50) %> <|>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

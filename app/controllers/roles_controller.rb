@@ -29,7 +29,7 @@ class RolesController < InheritedResources::Base
       redirect_to roles_path and return
     end
     @permissions = Permission.all.keep_if{|i| ["Part"].include? i.subject_class}.compact
-    render 'edit'
+    render 'new'
   end
 
   def edit
